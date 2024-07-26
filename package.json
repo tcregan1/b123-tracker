@@ -38,8 +38,5 @@
       "last 1 safari version"
     ]
   },
-  "homepage": ".",
-  "engines": {
-    "node": "14.x"
-  }
+  "homepage": "."
 }
