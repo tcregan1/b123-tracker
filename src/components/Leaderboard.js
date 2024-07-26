@@ -6,7 +6,7 @@ import '../styles.css'; // Ensure the path is correct for your CSS file
 import toastBeerImage from '../Images/toastBeer-removebg-preview.png'; // Import the image
 
 
-const socket = io('http://192.168.1.100:3000'); // Ensure this matches your backend URL
+const socket = io('https://beer-tracker-backend.onrender.com'); // Ensure this matches your backend URL
 
 const Leaderboard = () => {
   const [leaders, setLeaders] = useState([]);
