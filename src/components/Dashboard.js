@@ -1,3 +1,5 @@
+// src/components/Dashboard.js
+
 import React, { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthContext';
@@ -26,6 +28,7 @@ const Dashboard = () => {
     <div className="dashboard-container">
       <h2>BBQ & Beer Tracker</h2>
       <CapturePhoto onScoreIncrement={handleScoreIncrement} /> {/* Include the CapturePhoto component */}
+      <a href="/leaderboard" className="leaderboard-button">Go to Leaderboard</a> {/* Link to Leaderboard */}
     </div>
   );
 };
