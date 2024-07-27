@@ -46,11 +46,7 @@ const Dashboard = () => {
       <h2>BBQ & Beer Tracker</h2>
       <CapturePhoto onScoreIncrement={handleScoreIncrement} /> {/* Include the CapturePhoto component */}
       
-      <ul>
-        {leaderboard.map((user) => (
-          <li key={user._id}>{user.username}: {user.score}</li>
-        ))}
-      </ul>
+    
     </div>
   );
 };
