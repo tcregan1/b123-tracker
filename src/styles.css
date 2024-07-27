@@ -195,36 +195,29 @@ button:hover {
 
 /* Mobile Styles */
 @media only screen and (max-width: 768px) {
-  /* Leaderboard Container */
   .leaderboard-container {
     padding: 20px;
-    height: calc(100vh - 40px); /* Adjust height to fit the viewport, minus padding */
-    width: 100%; /* Use full width */
-    box-sizing: border-box; /* Include padding and border in element's total width and height */
-    overflow-y: auto; /* Allow vertical scrolling */
   }
-
-  /* Leaderboard Title */
+  
   .leaderboard-title {
     font-size: 1.5em; /* Smaller font size for mobile screens */
   }
-
-  /* Leaderboard List */
-  .leaderboard-list {
-    max-width: 100%; /* Ensure the list does not overflow the container */
-    margin: 0; /* Remove default margin */
-  }
-
-  /* Leaderboard Items */
+  
   .leaderboard-item {
-    font-size: 1.2em; /* Adjust font size for better readability on small screens */
-    padding: 15px; /* Reduce padding to fit content better */
-    margin: 8px 0; /* Adjust margin for spacing */
+    font-size: 1.2em; /* Smaller font size for mobile screens */
+    padding: 15px; /* Adjust padding for mobile screens */
+    margin: 5px 0; /* Adjust margin for mobile screens */
   }
 
-  /* Title Image */
+  .title-container {
+    flex-direction: column;
+  }
+
   .title-image {
-    width: 150px; /* Adjust size of images for smaller screens */
-    height: 150px;
+    width: 0px; /* Smaller image size for mobile screens */
+    height: 0px;
+    margin: 10px 0; /* Adjust margin for mobile screens */
   }
 }
+
+
