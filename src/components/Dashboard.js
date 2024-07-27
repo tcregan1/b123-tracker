@@ -1,3 +1,5 @@
+// src/components/Dashboard.js
+
 import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthContext';
@@ -10,7 +12,6 @@ const socket = io('https://beer-tracker-backend.onrender.com'); // Adjust if nee
 const Dashboard = () => {
   const { isAuthenticated } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [leaderboard, setLeaderboard] = useState([]);
 
   useEffect(() => {
     if (!isAuthenticated()) {
@@ -18,27 +19,9 @@ const Dashboard = () => {
     }
   }, [isAuthenticated, navigate]);
 
-  useEffect(() => {
-    socket.on('leaderboardUpdate', (users) => {
-      setLeaderboard(users);
-    });
-
-    // Cleanup on component unmount
-    return () => {
-      socket.off('leaderboardUpdate');
-    };
-  }, []);
-
   const handleScoreIncrement = (increment) => {
-    // Update the leaderboard with the new increment
-    setLeaderboard((prevLeaderboard) =>
-      prevLeaderboard.map((user) => {
-        if (user._id === socket.id) { // Assuming socket.id is the user ID
-          return { ...user, score: user.score + increment };
-        }
-        return user;
-      })
-    );
+    // Emit the score increment event to the backend
+    socket.emit('incrementScore', increment);
   };
 
   return (
@@ -46,8 +29,8 @@ const Dashboard = () => {
       <h2>BBQ & Beer Tracker</h2>
       <CapturePhoto onScoreIncrement={handleScoreIncrement} /> {/* Include the CapturePhoto component */}
       
-    
     </div>
+    
   );
 };
 

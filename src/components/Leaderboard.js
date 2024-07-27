@@ -5,7 +5,6 @@ import io from 'socket.io-client';
 import '../styles.css'; // Ensure the path is correct for your CSS file
 import toastBeerImage from '../Images/toastBeer-removebg-preview.png'; // Import the image
 
-
 const socket = io('https://beer-tracker-backend.onrender.com'); // Ensure this matches your backend URL
 
 const Leaderboard = () => {
