@@ -32,8 +32,8 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Welcome to the Dashboard</h2>
+    <div className="dashboard-container">
+      <h2>Beer & BBQ Scoreboard Extravaganza!</h2>
       <IncrementScore />
       <CapturePhoto /> {/* Include the CapturePhoto component */}
       <h3>Leaderboard</h3>

@@ -9,14 +9,26 @@ const socket = io('https://beer-tracker-backend.onrender.com'); // Ensure this m
 
 const IncrementScore = () => {
   const { authState } = useAuth();
-  const [increment, setIncrement] = useState(1);
+  const [selectedOption, setSelectedOption] = useState('Beer');
   const [error, setError] = useState(null);
 
-  const handleIncrementChange = (e) => {
-    setIncrement(Number(e.target.value));
+  const handleOptionChange = (e) => {
+    setSelectedOption(e.target.value);
   };
 
   const incrementScore = async () => {
+    let increment;
+    switch (selectedOption) {
+      case 'Shot':
+        increment = 1;
+        break;
+      case 'Double':
+        increment = 2;
+        break;
+      default: // 'Beer'
+        increment = 1;
+    }
+
     try {
       // Emit score increment event
       socket.emit('incrementScore', increment);
@@ -39,14 +51,16 @@ const IncrementScore = () => {
   return (
     <div>
       <h3>Increment Score</h3>
-      <input
-        type="number"
-        value={increment}
-        onChange={handleIncrementChange}
-        min="1"
-      />
-      <button onClick={incrementScore}>Increment Score</button>
-      {error && <p>{error}</p>}
+      <div>
+        <label htmlFor="scoreOption">Choose your increment:</label>
+        <select id="scoreOption" value={selectedOption} onChange={handleOptionChange}>
+          <option value="Beer">Beer (1 Point)</option>
+          <option value="Shot">Shot (1 Point)</option>
+          <option value="Double">Double (2 Points)</option>
+        </select>
+        <button onClick={incrementScore}>Increment Score</button>
+        {error && <p className="error">{error}</p>}
+      </div>
     </div>
   );
 };
