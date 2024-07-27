@@ -1,6 +1,4 @@
-// src/components/Dashboard.js
-
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthContext';
 import CapturePhoto from './CapturePhoto'; // Import CapturePhoto component
@@ -28,9 +26,7 @@ const Dashboard = () => {
     <div className="dashboard-container">
       <h2>BBQ & Beer Tracker</h2>
       <CapturePhoto onScoreIncrement={handleScoreIncrement} /> {/* Include the CapturePhoto component */}
-      
     </div>
-    
   );
 };
 
