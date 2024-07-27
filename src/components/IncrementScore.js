@@ -7,7 +7,7 @@ import { useAuth } from '../AuthContext'; // Ensure correct import
 
 const socket = io('https://beer-tracker-backend.onrender.com'); // Ensure this matches the backend URL
 
-const IncrementScore = () => {
+const IncrementScore = ({ onPhotoUploadSuccess }) => {
   const { authState } = useAuth();
   const [selectedOption, setSelectedOption] = useState('Beer');
   const [error, setError] = useState(null);
@@ -58,9 +58,9 @@ const IncrementScore = () => {
           <option value="Shot">Shot (1 Point)</option>
           <option value="Double">Double (2 Points)</option>
         </select>
-        <button onClick={incrementScore}>Increment Score</button>
-        {error && <p className="error">{error}</p>}
       </div>
+      {/* Button is removed from here */}
+      {error && <p className="error">{error}</p>}
     </div>
   );
 };

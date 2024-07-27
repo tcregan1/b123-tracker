@@ -1,4 +1,5 @@
 // src/components/Dashboard.js
+
 import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthContext';
@@ -13,6 +14,7 @@ const Dashboard = () => {
   const { isAuthenticated } = useContext(AuthContext);
   const navigate = useNavigate();
   const [leaderboard, setLeaderboard] = useState([]);
+  const [photoUploaded, setPhotoUploaded] = useState(false);
 
   useEffect(() => {
     if (!isAuthenticated()) {
@@ -31,11 +33,15 @@ const Dashboard = () => {
     };
   }, []);
 
+  const handlePhotoUploadSuccess = () => {
+    setPhotoUploaded(true); // Trigger score increment on successful photo upload
+  };
+
   return (
-    <div className="dashboard-container">
-      <h2>Beer & BBQ Scoreboard Extravaganza!</h2>
-      <IncrementScore />
-      <CapturePhoto /> {/* Include the CapturePhoto component */}
+    <div>
+      <h2>BBQ Beer Tracker</h2>
+      <IncrementScore onPhotoUploadSuccess={handlePhotoUploadSuccess} />
+      <CapturePhoto onUploadSuccess={handlePhotoUploadSuccess} />
       <h3>Leaderboard</h3>
       <ul>
         {leaderboard.map((user) => (

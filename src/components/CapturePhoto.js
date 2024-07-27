@@ -1,51 +1,52 @@
+// src/components/CapturePhoto.js
+
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useAuth } from '../AuthContext'; // Adjust import if necessary
+import { useAuth } from '../AuthContext'; // Ensure correct import
 
-const CapturePhoto = () => {
+const CapturePhoto = ({ onUploadSuccess }) => {
   const { authState } = useAuth();
   const [file, setFile] = useState(null);
   const [error, setError] = useState(null);
 
   const handleFileChange = (e) => {
-    setFile(e.target.files[0]); // Capture the selected file
+    setFile(e.target.files[0]);
   };
 
-  const handleUpload = async () => {
+  const uploadPhoto = async () => {
     if (!file) {
-      setError('Please select a photo');
+      setError('Please choose a file to upload.');
       return;
     }
 
     const formData = new FormData();
-    formData.append('photo', file);
+    formData.append('file', file);
 
     try {
-      // Use the JWT token from AuthContext
-      await axios.post('https://beer-tracker-backend.onrender.com/api/upload-photo', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: `Bearer ${authState.token}`, // Use the actual JWT token
-        },
-      });
-      alert('Photo uploaded successfully');
+      await axios.post(
+        'https://beer-tracker-backend.onrender.com/api/upload',
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${authState.token}`, // Use the actual JWT token
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
+      setError(null);
+      setFile(null);
+      onUploadSuccess(); // Notify parent component about successful upload
     } catch (err) {
-      setError('Error uploading photo');
-      console.error('Error uploading photo:', err);
+      setError(err.response?.data?.message || 'Error uploading photo');
     }
   };
 
   return (
     <div>
       <h3>Capture Photo</h3>
-      <input
-        type="file"
-        accept="image/*"
-        capture="environment" // Use the rear camera for capturing a photo
-        onChange={handleFileChange}
-      />
-      <button onClick={handleUpload}>Upload Photo</button>
-      {error && <p>{error}</p>}
+      <input type="file" onChange={handleFileChange} />
+      <button onClick={uploadPhoto}>Upload Photo</button>
+      {error && <p className="error">{error}</p>}
     </div>
   );
 };
