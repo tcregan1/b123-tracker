@@ -1,11 +1,12 @@
-/* src/styles.css */
+/* Global Styles */
 body {
-  background-color: gold;
+  background-color: gold; /* Background color for the entire page */
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
+  font-family: Arial, sans-serif;
 }
 
 .container {
@@ -23,13 +24,28 @@ form {
   gap: 10px;
 }
 
+input[type="text"],
+input[type="password"],
 button {
   padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+input[type="text"],
+input[type="password"] {
+  font-size: 16px;
+}
+
+button {
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
+  font-size: 16px;
 }
 
 button:hover {
@@ -38,79 +54,58 @@ button:hover {
 
 .error {
   color: red;
+  text-align: center;
 }
 
-/* src/styles.css */
-
-/* src/styles.css */
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f0e68c; /* Golden background for the whole page */
-}
-
+/* Leaderboard Styles */
 .leaderboard-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Full viewport height */
-  width: 100vh;
-  padding: 0;
-  box-sizing: border-box;
-  background-color: #f0e68c; /* Ensure the container matches the background */
+  height: 100vh;
+  width: 100vw;
+  background-color: #f0e68c;
 }
 
 .leaderboard-list {
   list-style: none;
   padding: 0;
   margin: 0;
-  width: 100%; /* Full width of the container */
-  max-width: 1200px; /* Adjust the maximum width of the list */
-  height: 100%; /* Full height of the container */
-  overflow-y: scroll; /* Enable vertical scrolling */
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  overflow-y: scroll;
 }
 
-/* Hide scrollbar for WebKit browsers */
 .leaderboard-list::-webkit-scrollbar {
   display: none;
 }
+
 .leaderboard-title {
-  font-size: 10em; /* Increase the size as needed */
-  font-weight: bold; /* Make the text bold */
-  color: #FFD700; /* Gold color, adjust as needed */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Optional: Add a shadow for better visibility */
-}
-
-/* Hide scrollbar for Firefox */
-.leaderboard-list {
-  scrollbar-width: none; /* For Firefox */
-}
-
-/* Hide scrollbar for IE, Edge and other non-WebKit browsers */
-.leaderboard-list {
-  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  font-size: 2em;
+  font-weight: bold;
+  color: #333;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .leaderboard-item {
-  background-color: #ffeb99; /* Light yellow background */
-  padding: 20px; /* Increased padding for larger records */
-  margin: 10px 0; /* Increased margin for spacing */
-  border: 2px solid #d4af37; /* Gold border */
-  border-radius: 15px; /* Rounder corners */
+  background-color: #ffeb99;
+  padding: 20px;
+  margin: 10px 0;
+  border: 2px solid #d4af37;
+  border-radius: 15px;
   display: flex;
   align-items: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  font-size: 1.5em; /* Larger font size for better readability */
-  width: 100%; /* Full width of the container */
-  max-width: 1000px; /* Maximum width of each record */
-  box-sizing: border-box; /* Ensure padding and border are included in the width */
+  font-size: 1.5em;
+  width: 100%;
+  max-width: 1000px;
+  box-sizing: border-box;
 }
 
 .leaderboard-item:nth-child(odd) {
-  background-color: #fff5cc; /* Slightly different color for alternating rows */
+  background-color: #fff5cc;
 }
 
 .position {
@@ -122,28 +117,15 @@ body {
   font-weight: bold;
 }
 
-.error {
-  color: red;
-  text-align: center;
-}
-
-
 .title-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px; /* Spacing below the title */
+  margin-bottom: 20px;
 }
 
 .title-image {
-  width: 200px; /* Adjust size as needed */
+  width: 200px;
   height: 200px;
-  margin: 0 20px; /* Space between the images and the title */
-}
-
-.leaderboard-title {
-  font-size: 2em; /* Larger font size for the title */
-  margin: 0;
-  text-align: center;
-  color: #333; /* Dark color for the title */
+  margin: 0 20px;
 }
