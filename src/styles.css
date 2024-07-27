@@ -130,8 +130,7 @@ button:hover {
   margin: 0 20px;
 }
 
-/* src/styles.css */
-
+/* Dashboard Styles */
 .dashboard-container {
   background-color: white;
   padding: 40px;
@@ -150,6 +149,16 @@ select {
   font-size: 1em;
 }
 
+input[type="file"] {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+  display: block;
+  width: 100%;
+}
+
 button {
   padding: 10px;
   background-color: #007bff;
@@ -163,8 +172,12 @@ button:hover {
   background-color: #0056b3;
 }
 
+.success {
+  color: green;
+  text-align: center;
+}
+
 .error {
   color: red;
   text-align: center;
 }
-

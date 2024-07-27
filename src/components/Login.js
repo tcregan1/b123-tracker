@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../AuthContext';
 import '../styles.css'; // Import the styles
 
@@ -50,6 +50,9 @@ const Login = () => {
         <button type="submit">Login</button>
         {error && <p className="error">{error}</p>}
       </form>
+      <p>
+        Don't have an account? <Link to="/register">Register</Link>
+      </p>
     </div>
   );
 };

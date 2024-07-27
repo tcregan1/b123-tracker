@@ -43,6 +43,7 @@ const IncrementScore = ({ onPhotoUploadSuccess }) => {
           }
         }
       );
+      onPhotoUploadSuccess(); // Call callback after successful score increment
     } catch (err) {
       setError(err.response?.data?.message || 'Error incrementing score');
     }
@@ -59,7 +60,7 @@ const IncrementScore = ({ onPhotoUploadSuccess }) => {
           <option value="Double">Double (2 Points)</option>
         </select>
       </div>
-      {/* Button is removed from here */}
+      <button onClick={incrementScore}>Increment Score</button>
       {error && <p className="error">{error}</p>}
     </div>
   );
